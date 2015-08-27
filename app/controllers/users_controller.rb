@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   
+  #ログイン？？？
+  before_action :logged_in_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update]
+  
   def show
    @user = User.find(params[:id])
   end
@@ -18,11 +22,30 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
+  
+  def edit
+  end
+  
+  def update
+    if @user.update(profile_params)
+      flash[:success] = "プロフィールを編集しました。"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+  
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+  
+  def profile_params
+    params.require(:user).permit(:name, :email, :description, :location)
+  end
+  
+  def set_user
+    @user = User.find(params[:id])
   end
 end
