@@ -48,3 +48,4 @@ end
 gem 'pry-byebug', group: :development
 gem 'kaminari'
 gem 'carrierwave'
+gem 'cloudinary'
