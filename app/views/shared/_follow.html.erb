@@ -1,0 +1,5 @@
+<ul>
+  <li><%= link_to "MICROPOSTS", user_path(@user) %> <span class="badge"><%= @user.microposts.count %></span></li>
+  <li><%= link_to "FOLLOWING", following_path(@user) %> <span class="badge"><%= @user.following_users.count %></span></li>
+  <li><%= link_to "FOLLOWERS", followers_path(@user) %> <span class="badge"><%= @user.follower_users.count %></span></li>
+</ul>

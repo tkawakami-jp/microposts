@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
   
   def show
-   @user = User.find(params[:id])
-   @microposts = @user.microposts
+    @user = User.find(params[:id])
+    @microposts = @user.microposts
   end
   
   def new
@@ -25,6 +25,9 @@ class UsersController < ApplicationController
   end
   
   def edit
+    if current_user != User.find(params[:id])
+      redirect_to user_path(current_user)
+    end
   end
   
   def update
@@ -34,6 +37,14 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+  
+  def following
+    @user = User.find(params[:id])
+  end
+  
+  def followers
+    @user = User.find(params[:id])
   end
   
   private

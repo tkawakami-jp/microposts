@@ -1,0 +1,34 @@
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <%= @user.description %><br>
+      <%= @user.location %><br>
+    </section>
+    
+    <%= render 'shared/follow' %>
+    
+  </aside>
+  <div class="col-md-8">
+    <% if @user.following_users.any? %>
+      <h3>Following (<%= @user.following_users.count %>)</h3>
+      <ol class="follows">
+        
+      <% @user.following_users.each do |following| %>
+      <li>
+        <%= link_to gravatar_for(following, size: 50), following %>
+        <span class="user"><%= link_to following.name, following %></span>
+        <span class="description"><%= following.description %></span>
+        <span class="location"><%= following.location %></span>
+      </li>
+      <% end %>
+      
+      </ol>
+    <% end %>
+  </div>
+</div>
+
+
