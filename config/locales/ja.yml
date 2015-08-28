@@ -1,5 +1,19 @@
 ---
 ja:
+  hello: 'こんにちは、世界'
+  The form contains: ''
+  update: '更新'
+  
+  activerecord:
+    models:
+      user: 'ユーザ情報'
+    attributes:
+      user:
+        name: '名前'
+        email: 'メールアドレス'
+        description: '自己紹介'
+        location: '地域'
+
   date:
     abbr_day_names:
     - 日
