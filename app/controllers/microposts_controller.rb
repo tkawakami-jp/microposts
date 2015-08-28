@@ -7,7 +7,12 @@ class MicropostsController < ApplicationController
       flash[:success] = "Micropost created!"
       redirect_to root_url
     else
+      @micropost = current_user.microposts.build
+      @feed_items = current_user.feed_items.includes(:user).order(created_at: :desc)
+      @user = User.find(current_user)
       render 'static_pages/home'
+      #flash[:alert] = 'メッセージの保存に失敗しました。'
+      #redirect_to root_url
     end
   end
   
