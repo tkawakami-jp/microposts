@@ -9,4 +9,9 @@
       <%= link_to "delete", micropost, method: :delete, data: { confirm: "You sure?" } %>
     <% end %>
   </span>
+
+  <% if micropost.image? %>
+      <%= image_tag micropost.image.url %>
+  <% end %>
+
 </li>
